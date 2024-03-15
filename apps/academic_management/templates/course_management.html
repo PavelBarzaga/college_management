@@ -1,5 +1,55 @@
 {% extends './base.html'%}
 
-{% block body %}
+{% block title%}Course Management{%endblock%}
 
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h2>Course Management</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" id="txtCode" name="txtCode" class="form-control" placeholder="Code"
+                            minlength="6" maxlength="6" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" id="txtName" name="txtName" class="form-control" placeholder="Name"
+                            maxlength="50" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" id="numCredits" name="numCredits" class="form-control" min="1" max="1"
+                            value="1" required>
+                    </div>
+                    <div class="input-group mb-3 d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-block text-white">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table responsive">
+            <h1>List of Courses</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Credits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in courses %}
+                    <tr>
+                        <td>{{ c.code }}</td>
+                        <td>{{ c.name }}</td>
+                        <td>{{ c.credits }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}
